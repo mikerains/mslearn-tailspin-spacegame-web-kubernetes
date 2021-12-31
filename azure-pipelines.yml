@@ -17,6 +17,13 @@ stages:
     pool:
       vmImage: 'ubuntu-20.04'
     steps:
+    # Node install
+    - task: NodeTool@0
+      displayName: Node install
+      inputs:
+        versionSpec: '14.x' # The version we're installing
+    # Write the installed version to the command line
+    - script: which node
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
       inputs:
