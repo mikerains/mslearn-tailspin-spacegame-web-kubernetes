@@ -16,10 +16,10 @@ COPY ["Tailspin.SpaceGame.Web/Tailspin.SpaceGame.Web.csproj", "Tailspin.SpaceGam
 RUN dotnet restore "Tailspin.SpaceGame.Web/Tailspin.SpaceGame.Web.csproj"
 COPY . .
 WORKDIR "/src/Tailspin.SpaceGame.Web"
-RUN dotnet build "Tailspin.SpaceGame.Web.csproj" -c Release -o /app/build
+RUN dotnet build "Tailspin.SpaceGame.Web.csproj" -c Development -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Tailspin.SpaceGame.Web.csproj" -c Release -o /app/publish
+RUN dotnet publish "Tailspin.SpaceGame.Web.csproj" -c Development -o /app/publish
 
 FROM base AS final
 WORKDIR /app
